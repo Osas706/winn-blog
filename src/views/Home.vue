@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <h2>Home</h2>
   </div>
 </template>
 
@@ -10,3 +10,9 @@ export default {
   components: {},
 };
 </script>
+
+<style lang="scss">
+  .home{
+    margin:auto;
+  }
+</style>
