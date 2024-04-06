@@ -38,7 +38,6 @@ export default {
     });
 
     this.checkRoute();
-    //console.log(firebase.auth().currentUser);
   },
   mounted() {},
 
