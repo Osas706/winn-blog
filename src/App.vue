@@ -11,6 +11,8 @@
 <script>
 import Navigation from './components/Navigation.vue';
 import Footer from './components/Footer.vue';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   name: "app",
@@ -26,7 +28,17 @@ export default {
   },
 
   created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+
+      if(user){
+        this.$store.dispatch("getCurrentUser");
+        console.log(this.$store.state.profileEmail);
+      }
+    });
+
     this.checkRoute();
+    //console.log(firebase.auth().currentUser);
   },
   mounted() {},
 
@@ -123,6 +135,12 @@ button, .router-button{
   pointer-events: none;
   cursor: none !important;
   background-color: rgba(128, 128, 128, 0.5) !important;
+}
+
+.error{
+  text-align: center;
+  font-size: 12px;
+  color: red;
 }
 
 .blog-card-wrap {
