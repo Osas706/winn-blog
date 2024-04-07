@@ -8,7 +8,7 @@
         </router-link>
       </p>
 
-      <h2>Login to Winn-Blogs</h2>
+      <h2>Login to WinnBlogs</h2>
 
       <div class="inputs">
         <div class="input">

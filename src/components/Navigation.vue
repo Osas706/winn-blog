@@ -2,7 +2,7 @@
    <header>
      <nav class="container">
         <div class="branding">
-          <router-link class="header" :to="{name: 'Home'}">Winn-Blogs</router-link>
+          <router-link class="header" :to="{name: 'Home'}">WinnBlogs</router-link>
         </div>
 
         <div class="nav-links">
@@ -10,7 +10,7 @@
             <router-link class="link" :to="{name: 'Home'}">Home</router-link>
             <router-link class="link" :to="{name: 'Blogs'}">Blogs</router-link>
             <router-link class="link" to="#">Create Post</router-link>
-            <router-link v-if="!user" class="link" :to="{name: 'Login' }">Login/Register</router-link>
+            <router-link v-if="!user" class="link" :to="{name: 'Login' }">Login|Register</router-link>
           </ul>
 
           <div v-if="user" @click="toggleProfileMenu" class="profile" ref="profile">
@@ -29,14 +29,14 @@
 
               <div class="options">
                 <div class="option">
-                  <router-link class="option" to="#">
+                  <router-link class="option" :to="{name: 'Profile'}">
                     <userIcon class="icon"/>
                     <p>Profile</p>
                   </router-link>
                 </div>
 
                 <div class="option">
-                  <router-link class="option" to="#">
+                  <router-link class="option" :to="{name: 'Admin'}">
                     <adminIcon class="icon" />
                     <p>Admin</p>
                   </router-link>
@@ -59,7 +59,7 @@
           <router-link class="link" :to="{name: 'Home'}">Home</router-link>
           <router-link class="link" :to="{name: 'Blogs'}">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
-          <router-link v-if="!user" class="link" :to="{name: 'Login' }">>Login/Register</router-link>
+          <router-link v-if="!user" class="link" :to="{name: 'Login' }">Login|Register</router-link>
         </ul>
      </transition>
    </header>
@@ -195,6 +195,7 @@ header {
   
           span {
             pointer-events: none;
+            text-transform: uppercase;
           }
   
           .profile-menu {
@@ -221,6 +222,7 @@ header {
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
+                text-transform: uppercase;
               }
   
               .right {

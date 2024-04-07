@@ -18,7 +18,7 @@
         <h2>Never miss a post, Register for your free account today!</h2>
 
         <router-link class="router-button" to="#">
-          Register for Winn-Blogs <Arrow class="arrow arrow-light"/>
+          Register for WinnBlogs <Arrow class="arrow arrow-light"/>
         </router-link>
       </div>
     </div>

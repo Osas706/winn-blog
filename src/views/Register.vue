@@ -8,7 +8,7 @@
         </router-link>
       </p>
 
-      <h2>Create Your Winn-Blogs Account</h2>
+      <h2>Create Your WinnBlogs Account</h2>
 
       <div class="inputs">
         <div class="input">
