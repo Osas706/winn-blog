@@ -11,6 +11,7 @@
 <script>
 export default {
   name: "PostPreview",
+  
   computed: {
     blogTitle() {
       return this.$store.state.blogTitle;
