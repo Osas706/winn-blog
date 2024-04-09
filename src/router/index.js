@@ -10,6 +10,10 @@ import Admin from "../views/Admin.vue";
 import CreatePost from "../views/CreatePost.vue";
 import BlogPreview from "../views/BlogPreview.vue";
 import ViewBlog from "../views/ViewBlog.vue";
+import EditBlog from "../views/EditBlog.vue";
+
+import firebase from "firebase/app";
+import "firebase/auth";
 
 Vue.use(VueRouter);
 
@@ -19,7 +23,8 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      title: 'Home'
+      title: 'Home',
+      requiresAuth: false
     }
   },
   {
@@ -27,7 +32,8 @@ const routes = [
     name: "Blogs",
     component: Blogs,
     meta: {
-      title: 'Blogs'
+      title: 'Blogs',
+      requiresAuth: false
     }
   },
   {
@@ -35,7 +41,8 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title: 'Login'
+      title: 'Login',
+      requiresAuth: false
     }
   },
   {
@@ -43,7 +50,8 @@ const routes = [
     name: "Register",
     component: Register,
     meta: {
-      title: 'Register'
+      title: 'Register',
+      requiresAuth: false
     }
   },
   {
@@ -51,7 +59,8 @@ const routes = [
     name: "ForgotPassword",
     component: ForgotPassword,
     meta: {
-      title: 'Forgot Password'
+      title: 'Forgot Password',
+      requiresAuth: false
     }
   },
   {
@@ -59,7 +68,8 @@ const routes = [
     name: "Profile",
     component: Profile,
     meta: {
-      title: 'Profile'
+      title: 'Profile',
+      requiresAuth: true,
     }
   },
   {
@@ -67,7 +77,9 @@ const routes = [
     name: "Admin",
     component: Admin,
     meta: {
-      title: 'Admin'
+      title: 'Admin',
+      requiresAuth: true,
+      requiresAdmin: true,
     }
   },
   {
@@ -75,7 +87,8 @@ const routes = [
     name: "CreatePost",
     component: CreatePost,
     meta: {
-      title: 'Create Post'
+      title: 'Create Post',
+      requiresAuth: true,
     }
   },
   {
@@ -83,7 +96,8 @@ const routes = [
     name: "BlogPreview",
     component: BlogPreview,
     meta: {
-      title: 'Preview Blog Post'
+      title: 'Preview Blog Post',
+      requiresAuth: true,
     }
   },
   {
@@ -91,7 +105,17 @@ const routes = [
     name: "ViewBlog",
     component: ViewBlog,
     meta: {
-      title: 'View Blog Post'
+      title: 'View Blog Post',
+      requiresAuth: false,
+    }
+  },
+  {
+    path: "/edit-blog/:blogid",
+    name: "EditBlog",
+    component: EditBlog,
+    meta: {
+      title: 'Edit Blog Post',
+      requiresAuth: true,
     }
   },
 ];
@@ -106,5 +130,32 @@ router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | Winn-Blogs`;
   next();
 });
+
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser;
+  let admin = null;
+
+  if(user){
+    let token = await user.getIdTokenResult();
+    admin = token.claims.admin;
+  }
+
+  if(to.matched.some((res) => res.meta.requiresAuth)){
+    if(user){
+      if(to.matched.some((res) => res.meta.requiresAdmin)){
+       if(admin){
+         return next()
+       }
+
+       return next({ name: "Home"})
+      }
+      return next();
+    }
+
+    return next({name: 'Home'});
+  }
+
+  return next();
+})
 
 export default router;
