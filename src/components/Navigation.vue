@@ -135,7 +135,15 @@ header {
     padding: 0 25px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 99;
-  
+
+      
+    .container{
+      @media (min-width: 500px) {
+        margin-right: 25px ;
+      }
+      
+    }
+
     .link {
       font-weight: 500;
       padding: 0 8px;
