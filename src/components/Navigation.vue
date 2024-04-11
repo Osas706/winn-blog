@@ -52,7 +52,7 @@
         </div>
      </nav>
 
-     <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile"/>
+     <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile" />
 
      <transition name="mobile-nav">
         <ul class="mobile-nav" v-show="mobileNav">
@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import menuIcon from '../assets/Icons/bars-regular.svg';
 import userIcon from '../assets/Icons/user-alt-light.svg';
+import menuIcon from '../assets/Icons/bars-regular.svg';
 import adminIcon from '../assets/Icons/user-crown-light.svg';
 import signOutIcon from '../assets/Icons/sign-out-alt-regular.svg';
 import firebase from "firebase/app";
@@ -75,6 +75,7 @@ import "firebase/auth";
 
 export default {
    name: 'navigation',
+
    components: {
      menuIcon, userIcon, adminIcon, signOutIcon,
     },
@@ -87,6 +88,7 @@ export default {
         windowWidth: null,
       }
     },
+
     created() {
       window.addEventListener('resize', this.checkScreen);
       this.checkScreen();
@@ -135,13 +137,12 @@ header {
     padding: 0 25px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 99;
-
       
     .container{
       @media (min-width: 500px) {
         margin-right: 25px ;
       }
-      
+
     }
 
     .link {

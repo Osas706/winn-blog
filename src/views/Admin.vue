@@ -8,7 +8,7 @@
 
         <div class="input">
           <input
-            placeholder="Enter user email to make them an admin"
+            placeholder="Enter user email to be an admin"
             type="text"
             id="addAdmins"
             v-model="adminEmail"
@@ -16,7 +16,7 @@
         </div>
 
         <span>{{ this.functionMsg }}</span>
-        <button class="button" disabled>Submit</button>
+        <button class="button" disabled >Submit</button>
       </div>
     </div>
   </div>
@@ -25,6 +25,7 @@
 <script>
 export default {
   name: "Admin",
+  
   data() {
     return {
       adminEmail: "",
