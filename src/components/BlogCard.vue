@@ -1,7 +1,7 @@
 <template>
     <div class="blog-card">
         <div v-show="editPost" class="icons">
-          <div @click="editBlog" class="icon">
+          <div @click="editBlog" v-show="user" class="icon">
             <Edit class="edit" />
           </div>
 
