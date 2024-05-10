@@ -1,14 +1,29 @@
+// vue.config.js
 module.exports = {
   chainWebpack: (config) => {
-    const svgRule = config.module.rule("svg");
+    config.resolve.alias.set('vue', '@vue/compat')
 
-    svgRule.uses.clear();
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        return {
+          ...options,
+          compilerOptions: {
+            compatConfig: {
+              MODE: 2
+            }
+          }
+        }
+      })
+  }
+}
 
-    svgRule
-      .use("babel-loader")
-      .loader("babel-loader")
-      .end()
-      .use("vue-svg-loader")
-      .loader("vue-svg-loader");
-  },
-};
+
+/*svgRule
+.use("babel-loader")
+.loader("babel-loader")
+.end()
+.use("vue-svg-loader")
+.loader("vue-svg-loader");
+*/
