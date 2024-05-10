@@ -120,7 +120,7 @@ const routes = [
   },
 ];
 
-const router = new createRouter({
+const router = createRouter({
   //mode: "history",
   history: createWebHistory(process.env.BASE_URL),
   routes,
