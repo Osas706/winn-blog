@@ -1,5 +1,4 @@
-import Vue from "vue";
-import VueRouter, { createRouter, createWebHistory }  from "vue-router";
+import  { createRouter, createWebHistory }  from "vue-router";
 import Home from "../views/Home.vue";
 import Blogs from "../views/Blogs.vue";
 import Login from "../views/Login.vue";
@@ -14,8 +13,6 @@ import EditBlog from "../views/EditBlog.vue";
 
 import firebase from "firebase/app";
 import "firebase/auth";
-
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -121,8 +118,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  //mode: "history",
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL,),
   routes,
 });
 

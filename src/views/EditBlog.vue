@@ -57,12 +57,12 @@ import Loading from "../components/Loading.vue";
 import firebase from "firebase/app";
 import "firebase/storage";
 import db from "../firebase/firebaseInit";
-import Quill from "quill";
+// import Quill from "quill";
 
-window.Quill = Quill;
+// window.Quill = Quill;
 
-const ImageResize = require("quill-image-resize-module").default;
-Quill.register("modules/imageResize", ImageResize);
+// const ImageResize = require("quill-image-resize-module").default;
+// Quill.register("modules/imageResize", ImageResize);
 
 export default {
   name: "CreatePost",

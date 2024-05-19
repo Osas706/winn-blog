@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <div class="app" v-if="this.$store.state.postLoaded" >
+    <div class="app" v-if="this.$store?.state.postLoaded" >
       <Navigation v-if="!navigation" />
-      <router-view />
+      <router-view></router-view>
       <Footer v-if="!navigation" />
     </div>
   </div>
@@ -29,22 +29,22 @@ export default {
 
   created() {
     firebase.auth().onAuthStateChanged((user) => {
-      this.$store.commit("updateUser", user);
+      this.$store?.commit("updateUser", user);
 
       if(user){
-        this.$store.dispatch("getCurrentUser");
+        this.$store?.dispatch("getCurrentUser");
       }
     });
 
     this.checkRoute();
-    this.$store.dispatch("getPost");
+    this.$store?.dispatch("getPost");
   },
 
   mounted() {},
 
   methods: {
     checkRoute(){
-      if(this.$route.name === "Login" || this.$route.name === "Register" || this.$route.name === "ForgotPassword"){
+      if(this.$route?.name === "Login" || this.$route?.name === "Register" || this.$route?.name === "ForgotPassword"){
         this.navigation = true;
 
         return;
