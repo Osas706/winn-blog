@@ -19,7 +19,7 @@
     </div>
 
     <div class="blog-photo">
-      <img v-if="post.welcomeScreen" :src="(`../assets/blogPhotos/${post.photo}.jpeg`)" alt=""> 
+      <img v-if="post.welcomeScreen" :src="(`../assets/blogPhotos/${post.photo}.jpeg`)"  /> 
       <img v-else :src="post.blogCoverPhoto" alt="">
     </div>
   </div>
